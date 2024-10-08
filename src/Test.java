@@ -1,17 +1,19 @@
 public class Test {
     int i;
-    Test(int i){
-        this.i = 12;
-        i=15;
+    Test(Test t){
+        if(t == null) this.i = 12;
+        else {
+            t.m();
+            this.i = t.i;
+        }
     }
-    void i(){
-        Test i = new Test(3);
-        System.out.println(i.i);
-        i.i();
+    void m(){
+        this.i++;
+        System.out.println(this.i);
     }
 
     public static void main(String[] args) {
-        Test i = new Test(34);
-        i.i();
+        Test i = new Test(new Test(new Test(null)));
     }
+
 }
