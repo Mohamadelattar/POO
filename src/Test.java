@@ -1,11 +1,11 @@
 public class Test {
     int i;
-    Test(Test t){
-        if(t == null) this.i = 12;
-        else {
-            t.m();
-            this.i = t.i;
-        }
+    Test(){
+        this.i = 1;
+    }
+    Test(int i){
+        this();
+        this.i = i;
     }
     void m(){
         this.i++;
@@ -13,7 +13,10 @@ public class Test {
     }
 
     public static void main(String[] args) {
-        Test i = new Test(new Test(new Test(null)));
+        Test i = new Test(2);
+        i.m();
+        i=new Test();
+        System.gc();
     }
 
 }
