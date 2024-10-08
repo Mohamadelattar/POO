@@ -1,21 +1,33 @@
 public class A {
-    int i;
-    A a;
-    A(int i){
-        if (i <= 0){
-            this.i = i;
-            this.a = new A(i-1);
-        }
-        else this.i = i;
+    int i = 0;
+    A(int j){
+        this.i = j;
     }
-    void passeATonVoisin(){
-        this.i++;
-        if (this.a!=null) this.a.passeATonVoisin();
-        else System.out.println(this.i);
+    void setI(int k){
+        this.i = k;
+    }
+    void setI(A a){
+        this.i = a.i;
+    }
+}
+
+class B extends A{
+    int i = 1;
+    B(){
+        super(2);
+    }
+    void setI(int l){
+        this.i = l;
+    }
+    void setI(B b){
+        this.i = b.i;
     }
 
     public static void main(String[] args) {
-        A a = new A(10);
-        a.passeATonVoisin();
+        A a = new A(5);
+        B b = new B();
+        System.out.println("a.i"+a.i+",b.i="+b.i+"ou"+((A)b).i);
+        b.setI(3); b.setI(a);
+        System.out.println("a.i="+a.i+",b.i="+b.i+"ou"+((A)b).i);
     }
 }
